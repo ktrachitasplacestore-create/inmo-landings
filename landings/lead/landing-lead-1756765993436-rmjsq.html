@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Silvia Ramírez, encuentra la casa ideal para ti en Danlí</title>
+<meta name="description" content="Descubre casas de 2 habitaciones que se ajustan a tu estilo de vida y necesidades"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-2:#111826;
+    --card:#121722;
+    --gold:#d4af37;
+    --gold-600:#b9921a;
+    --gold-700:#9f7d0f;
+    --ring: rgba(212,175,55,.25);
+  }
+  body{ background: radial-gradient(1200px 600px at 70% -100px, #1a2433 0%, var(--bg) 40%), var(--bg); }
+  .hero{
+    background: radial-gradient(900px 420px at 20% -20%, #24314a 0%, transparent 50%),
+                linear-gradient(135deg, #0f1520 0%, #0b0f14 100%);
+  }
+  .bg-card{ background: var(--card); }
+  .text-gold{ color: var(--gold); }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-600) 100%);
+    color:#0b0e13; font-weight:700; transition:.25s; border:1px solid rgba(212,175,55,.5);
+  }
+  .btn-primary:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+  .price-chip{
+    background: rgba(0,0,0,.6); color: var(--gold);
+    border: 1px solid var(--gold-600); padding:.25rem .6rem; border-radius: 9999px;
+    font-weight:800; font-size:.95rem; box-shadow: 0 4px 16px var(--ring);
+  }
+  .feature-pill{
+    background: rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    padding:.35rem .6rem; border-radius:9999px;
+  }
+
+  /* Flip cards */
+  .flip-card{ perspective: 1200px; }
+  .flip-inner{ position:relative; width:100%; height:100%; transition:transform .7s; transform-style:preserve-3d; }
+  .flip-card:hover .flip-inner, .flip-card.touch-flip .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .flip-back{ transform: rotateY(180deg); }
+
+  /* Typography overrides for luxury feel */
+  h1,h2,h3,h4{ letter-spacing:.2px }
+</style>
+</head>
+
+<body class="text-white">
+  <!-- Navbar -->
+  <nav class="w-full sticky top-0 z-40 border-b border-white/10 backdrop-blur bg-black/30">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <span class="font-extrabold text-xl">Inmobiliaria <span class="text-gold">Honduras</span></span>
+      </div>
+      <div class="text-sm text-white/80"><i class="fa-solid fa-phone mr-2 text-gold"></i>+504 2234-5678</div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        Silvia Ramírez, encuentra la casa ideal para ti en Danlí
+      </h1>
+      <p class="text-lg md:text-2xl text-white/85 mb-8">Descubre casas de 2 habitaciones que se ajustan a tu estilo de vida y necesidades</p>
+      <button onclick="document.getElementById('propiedades').scrollIntoView({behavior:'smooth'})"
+        class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg">
+        Silvia, agenda tu visita y haz realidad la casa que mereces
+      </button>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-6">
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Casas con jardín y garaje para mayor comodidad y privacidad</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Acceso cercano a parques y centros de salud, vital para tu bienestar</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Oportunidades exclusivas en un mercado inmobiliario competitivo en Danlí</p>
+          </div>
+        
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-10 text-white/85 space-y-4">
+        <p>Silvia, sabemos que buscar una casa de 2 habitaciones en Danlí no es solo una decisión de compra, sino la búsqueda de un espacio donde puedas construir nuevos recuerdos y vivir con tranquilidad. Te ofrecemos opciones que combinan comodidad y funcionalidad para que sientas el calor de un verdadero hogar desde el primer instante.</p>
+        <p>Vivir en Danlí significa disfrutar de un ambiente cálido, rodeado de naturaleza y con una comunidad amable y acogedora. Aquí, aunque no busques estar cerca de escuelas, tendrás acceso sencillo a parques y centros de salud que garantizan bienestar y calidad de vida para ti y tu familia.</p>
+        <p>No dejes pasar estas exclusivas oportunidades en Danlí. Las casas con jardín y garaje que tenemos disponibles son únicas y están esperando por alguien que valore su comodidad y ubicación. Actúa ahora y asegúrate de dar el paso hacia la propiedad que cumplirá tus sueños.</p>
+      </div>
+
+      <div class="bg-card border border-gold/15 rounded-2xl p-8 mt-10">
+        <h3 class="text-2xl font-bold text-gold mb-2">Nuestra Propuesta de Valor</h3>
+        <p class="text-white/85">Propiedades cuidadosamente seleccionadas en Danlí que unen confort, ubicación estratégica y un ambiente tranquilo para que tu inversión sea segura y valiosa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Propiedades -->
+  <section id="propiedades" class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Propiedades Seleccionadas Para Ti</h2>
+      <p class="text-center text-white/70 mb-10">Encontramos 0 opciones que coinciden con lo que buscas</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-black/30 border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl md:text-4xl font-extrabold mb-4">¿Listo para dar el siguiente paso?</h3>
+      <p class="text-lg text-white/80 mb-8">Conversemos y agenda tu visita</p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+  <a href="https://wa.me/50431965151?text=Hola%2C%20vi%20las%20propiedades%20y%20me%20interesa%20saber%20m%C3%A1s"
+     class="btn-primary px-8 py-4 rounded-full">
+     <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+  </a>
+  <a href="mailto:info@inmobiliaria.com?subject=Consulta%20sobre%20propiedades"
+     class="px-8 py-4 rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-black transition">
+     <i class="fa-solid fa-envelope mr-2"></i> Email
+  </a>
+</div>
+
+           class="px-8 py-4 rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-black transition"> <i class="fa-solid fa-envelope mr-2"></i> Email </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-white/70 border-t border-white/10">
+    <p>&copy; 2025 Inmobiliaria Honduras — <span class="text-gold">Luxury Collection</span></p>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/50431965151?text=Hola%2C%20me%20interesa%20informaci%C3%B3n%20sobre%20las%20propiedades"
+     class="fixed bottom-6 right-6 z-50 btn-primary rounded-full px-5 py-3 shadow-2xl">
+     <i class="fab fa-whatsapp mr-2"></i> Contactar
+  </a>
+
+  <script>
+  const LEAD_SUFFIX = "";
+
+  // Flip en móvil con tap
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.flip-card');
+    if(card){ card.classList.toggle('touch-flip'); }
+  });
+
+  function contactAgent(propertyId){
+    const msg = 'Hola, me interesa la propiedad ' + propertyId + ' que vi en la landing' + LEAD_SUFFIX;
+    window.open('https://wa.me/50431965151?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  try { if (typeof gtag === 'function') {
+    gtag('event', 'page_view', { page_title: 'Silvia Ramírez, encuentra la casa ideal para ti en Danlí', lead_name: "", properties_shown: 0 });
+  }} catch(e){}
+</script>
+
+</body>
+</html>
