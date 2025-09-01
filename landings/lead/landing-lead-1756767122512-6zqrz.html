@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marcos, encuentra el apartamento ideal para rentar en Tegucigalpa</title>
+<meta name="description" content="Apartamentos con 2 habitaciones que se adaptan a tu estilo de vida en la capital hondureña"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+  :root{ --bg:#0b0f14; --bg-2:#111826; --card:#121722; --gold:#d4af37; --gold-600:#b9921a; --gold-700:#9f7d0f; --ring: rgba(212,175,55,.25); }
+  body{ background: radial-gradient(1200px 600px at 70% -100px, #1a2433 0%, var(--bg) 40%), var(--bg); }
+  .hero{ background: radial-gradient(900px 420px at 20% -20%, #24314a 0%, transparent 50%), linear-gradient(135deg, #0f1520 0%, #0b0f14 100%); }
+  .bg-card{ background: var(--card); }
+  .text-gold{ color: var(--gold); }
+  .btn-primary{ background: linear-gradient(135deg, var(--gold) 0%, var(--gold-600) 100%); color:#0b0e13; font-weight:700; transition:.25s; border:1px solid rgba(212,175,55,.5); }
+  .btn-primary:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+  .price-chip{ background: rgba(0,0,0,.6); color: var(--gold); border: 1px solid var(--gold-600); padding:.25rem .6rem; border-radius:9999px; font-weight:800; font-size:.95rem; box-shadow:0 4px 16px var(--ring); }
+  .feature-pill{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); padding:.35rem .6rem; border-radius:9999px; }
+  .flip-card{ perspective: 1200px; }
+  .flip-inner{ position:relative; width:100%; height:100%; transition:transform .7s; transform-style:preserve-3d; }
+  .flip-card:hover .flip-inner, .flip-card.touch-flip .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .flip-back{ transform: rotateY(180deg); }
+  h1,h2,h3,h4{ letter-spacing:.2px }
+</style>
+</head>
+
+<body class="text-white">
+  <!-- Navbar -->
+  <nav class="w-full sticky top-0 z-40 border-b border-white/10 backdrop-blur bg-black/30">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <span class="font-extrabold text-xl">Inmobiliaria <span class="text-gold">Honduras</span></span>
+      </div>
+      <div class="text-sm text-white/80"><i class="fa-solid fa-phone mr-2 text-gold"></i>+504 2234-5678</div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Marcos, encuentra el apartamento ideal para rentar en Tegucigalpa</h1>
+      <p class="text-lg md:text-2xl text-white/85 mb-8">Apartamentos con 2 habitaciones que se adaptan a tu estilo de vida en la capital hondureña</p>
+      <button onclick="document.getElementById('propiedades').scrollIntoView({behavior:'smooth'})" class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg">
+        Marcos, agenda tu visita y comienza a vivir en el apartamento perfecto hoy mismo
+      </button>
+    </div>
+  </section>
+
+  <!-- Propuesta de Valor -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-6">
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Apartamentos cuidadosamente seleccionados para tu comodidad y estilo de vida</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Ubicación estratégica que facilita tu movilidad y acceso a servicios esenciales</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg">
+            <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+            <p class="font-semibold">Atención personalizada y procesos ágiles para que tu experiencia sea sencilla y confiable</p>
+          </div>
+        
+      </div>
+      <div class="max-w-3xl mx-auto mt-10 text-white/85 space-y-4">
+        <p>Sabemos lo importante que es para ti encontrar un apartamento cómodo y funcional que se convierta en tu hogar temporal. En Tegucigalpa, te ofrecemos opciones que combinan la tranquilidad con el dinamismo de una ciudad vibrante, perfecta para quienes buscan calidad y conveniencia en cada rincón.</p><p>Vivir en Tegucigalpa significa disfrutar de una ciudad llena de historia y modernidad, con accesos fáciles a servicios, comercios y espacios culturales que enriquecen tu día a día. Desde zonas residenciales tranquilas hasta áreas cercanas a los principales puntos urbanos, cada apartamento está diseñado para brindarte confort y seguridad.</p><p>No dejes pasar estas exclusivas opciones de apartamentos con 2 habitaciones disponibles ahora. La demanda crece rápido en Tegucigalpa, y estas propiedades únicas están esperando por alguien que valore el equilibrio perfecto entre espacio y ubicación. ¡Actúa hoy y asegura tu nuevo hogar!</p>
+      </div>
+      <div class="bg-card border border-gold/15 rounded-2xl p-8 mt-10">
+        <h3 class="text-2xl font-bold text-gold mb-2">Nuestra Propuesta de Valor</h3>
+        <p class="text-white/85">Encuentra fácilmente tu apartamento de dos habitaciones en Tegucigalpa, con la confianza y respaldo de nuestra agencia local, que entiende tus necesidades y te acompaña en cada paso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Propiedades -->
+  <section id="propiedades" class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Propiedades Seleccionadas Para Ti</h2>
+      <p class="text-center text-white/70 mb-10">Encontramos 3 opciones que coinciden con lo que buscas</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <!-- FRONT -->
+        <div class="flip-face flip-front">
+          <div class="relative h-60 md:h-64 lg:h-72 overflow-hidden rounded-2xl shadow-xl border border-gold/20">
+            <img src="https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-209315_ly0tnd.webp" alt="Calle Costa Azul #12, Colonia Puerto Bello" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-black/60 text-gold px-3 py-1 rounded-full text-xs font-semibold border border-gold/40 shadow">
+              Tegucigalpa · Colonia Puerto Bello
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%]">
+                <p class="text-white/90 text-xs mb-1 line-clamp-1">Calle Costa Azul #12, Colonia Puerto Bello</p>
+                <h3 class="text-white text-lg font-bold drop-shadow">Apartamento</h3>
+              </div>
+              <div class="price-chip"><span>800</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-face flip-back">
+          <div class="h-60 md:h-64 lg:h-72 rounded-2xl shadow-xl border border-gold/20 p-4 flex flex-col justify-between bg-card">
+            <div>
+              <h4 class="text-gold font-bold text-lg mb-1">Apartamento · Tegucigalpa</h4>
+              <p class="text-white/80 text-xs mb-2">Calle Costa Azul #12, Colonia Puerto Bello</p>
+              <div class="grid grid-cols-2 gap-3 text-sm text-white/90">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>2 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>1 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>70 m²</div>
+                <div class="feature-pill"><i class="fa-solid fa-seedling mr-2"></i>Jardín: No</div>
+              </div>
+              <p class="text-white/80 text-xs mt-3 line-clamp-2">Apartamento acogedor cerca del mar.</p>
+              <p class="text-white/60 text-xs mt-1 line-clamp-2">Vista al mar, zona turística</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-gold font-semibold">800</div>
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="contactAgent('6')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <!-- FRONT -->
+        <div class="flip-face flip-front">
+          <div class="relative h-60 md:h-64 lg:h-72 overflow-hidden rounded-2xl shadow-xl border border-gold/20">
+            <img src="https://res.cloudinary.com/dtugea4l5/image/upload/v1756744717/pexels-emrecan-2079249_vyjc0o.webp" alt="Calle Luna #21, Barrio La Ronda" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-black/60 text-gold px-3 py-1 rounded-full text-xs font-semibold border border-gold/40 shadow">
+              Tegucigalpa · Barrio La Ronda
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%]">
+                <p class="text-white/90 text-xs mb-1 line-clamp-1">Calle Luna #21, Barrio La Ronda</p>
+                <h3 class="text-white text-lg font-bold drop-shadow">Apartamento</h3>
+              </div>
+              <div class="price-chip"><span>450</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-face flip-back">
+          <div class="h-60 md:h-64 lg:h-72 rounded-2xl shadow-xl border border-gold/20 p-4 flex flex-col justify-between bg-card">
+            <div>
+              <h4 class="text-gold font-bold text-lg mb-1">Apartamento · Tegucigalpa</h4>
+              <p class="text-white/80 text-xs mb-2">Calle Luna #21, Barrio La Ronda</p>
+              <div class="grid grid-cols-2 gap-3 text-sm text-white/90">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>2 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>1 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>90 m²</div>
+                <div class="feature-pill"><i class="fa-solid fa-seedling mr-2"></i>Jardín: No</div>
+              </div>
+              <p class="text-white/80 text-xs mt-3 line-clamp-2">Apartamento acogedor ideal para parejas jóvenes.</p>
+              <p class="text-white/60 text-xs mt-1 line-clamp-2">Cerca de parques y supermercados</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-gold font-semibold">450</div>
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="contactAgent('13')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <!-- FRONT -->
+        <div class="flip-face flip-front">
+          <div class="relative h-60 md:h-64 lg:h-72 overflow-hidden rounded-2xl shadow-xl border border-gold/20">
+            <img src="https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-462205_xd5qej.webp" alt="Calle Miraflores #7, Colonia Miraflores" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-black/60 text-gold px-3 py-1 rounded-full text-xs font-semibold border border-gold/40 shadow">
+              Tegucigalpa · Colonia Miraflores
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%]">
+                <p class="text-white/90 text-xs mb-1 line-clamp-1">Calle Miraflores #7, Colonia Miraflores</p>
+                <h3 class="text-white text-lg font-bold drop-shadow">Casa</h3>
+              </div>
+              <div class="price-chip"><span>1200</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-face flip-back">
+          <div class="h-60 md:h-64 lg:h-72 rounded-2xl shadow-xl border border-gold/20 p-4 flex flex-col justify-between bg-card">
+            <div>
+              <h4 class="text-gold font-bold text-lg mb-1">Casa · Tegucigalpa</h4>
+              <p class="text-white/80 text-xs mb-2">Calle Miraflores #7, Colonia Miraflores</p>
+              <div class="grid grid-cols-2 gap-3 text-sm text-white/90">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>2 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>2 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>150 m²</div>
+                <div class="feature-pill"><i class="fa-solid fa-seedling mr-2"></i>Jardín: No</div>
+              </div>
+              <p class="text-white/80 text-xs mt-3 line-clamp-2">Local comercial amplio para oficina o negocio grande.</p>
+              <p class="text-white/60 text-xs mt-1 line-clamp-2">Seguridad 24 horas, parqueo privado</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-gold font-semibold">1200</div>
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="contactAgent('17')">
+                Más información
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-black/30 border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl md:text-4xl font-extrabold mb-4">¿Listo para dar el siguiente paso?</h3>
+      <p class="text-lg text-white/80 mb-8">Conversemos y agenda tu visita</p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="https://wa.link/ih5hoi" class="btn-primary px-8 py-4 rounded-full"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</a>
+        <a href="mailto:info@inmobiliaria.com?subject=Consulta%20sobre%20propiedades"
+           class="px-8 py-4 rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-black transition">
+           <i class="fa-solid fa-envelope mr-2"></i> Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-white/70 border-t border-white/10">
+    <p>&copy; 2025 Inmobiliaria Honduras — <span class="text-gold">Luxury Collection</span></p>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.link/ih5hoi" class="fixed bottom-6 right-6 z-50 btn-primary rounded-full px-5 py-3 shadow-2xl">
+    <i class="fab fa-whatsapp mr-2"></i> Contactar
+  </a>
+
+  <script>
+    const LEAD_SUFFIX = "";
+
+    // Flip en móvil con tap
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.flip-card');
+      if(card){ card.classList.toggle('touch-flip'); }
+    });
+
+    function contactAgent(propertyId){
+      // Se usa el shortlink oficial
+      window.open('https://wa.link/ih5hoi', '_blank');
+    }
+
+    try { if (typeof gtag === 'function') {
+      gtag('event', 'page_view', { page_title: 'Marcos, encuentra el apartamento ideal para rentar en Tegucigalpa', lead_name: "", properties_shown: 3 });
+    }} catch(e){}
+  </script>
+</body>
+</html>
