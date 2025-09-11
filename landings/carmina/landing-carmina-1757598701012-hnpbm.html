@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Encuentra tu hogar ideal en España - Carmina</title>
+<meta name="description" content="Filtramos y negociamos por ti para ahorrarte tiempo, estrés y dinero."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  :root{ --bg:#0b0f14; --bg-2:#111826; --card:#121722; --gold:#d4af37; --gold-600:#b9921a; --gold-700:#9f7d0f; --ring: rgba(212,175,55,.25); --card-h: 22rem; }
+  body{ background: radial-gradient(1200px 600px at 70% -100px, #1a2433 0%, var(--bg) 40%), var(--bg); }
+  .hero{ background: radial-gradient(900px 420px at 20% -20%, #24314a 0%, transparent 50%), linear-gradient(135deg, #0f1520 0%, #0b0f14 100%); }
+  .bg-card{ background: var(--card); }
+  .text-gold{ color: var(--gold); }
+  .btn-primary{ background: linear-gradient(135deg, var(--gold) 0%, var(--gold-600) 100%); color:#0b0e13; font-weight:700; transition:.25s; border:1px solid rgba(212,175,55,.5); }
+  .btn-primary:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+  .price-chip{ background: rgba(0,0,0,.6); color: var(--gold); border: 1px solid var(--gold-600); padding:.25rem .6rem; border-radius:9999px; font-weight:800; font-size:.95rem; box-shadow:0 4px 16px var(--ring); }
+  .feature-pill{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); padding:.35rem .6rem; border-radius:9999px; }
+  .flip-card{ perspective:1200px; height: var(--card-h); }
+  .flip-inner{ position:relative; width:100%; height:100%; transition:transform .7s; transform-style:preserve-3d; }
+  .flip-card:hover .flip-inner, .flip-card.touch-flip .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .flip-back{ transform: rotateY(180deg); }
+  /* Vibración beneficios */
+  .benefit-card{ transition: transform .15s; }
+  .benefit-card:hover{ animation: vibrate .25s linear infinite; }
+  @keyframes vibrate{
+    0% { transform: translate(0) rotate(0); }
+    20%{ transform: translate(-1px, 1px) rotate(-0.5deg); }
+    40%{ transform: translate(1px, -1px) rotate(0.5deg); }
+    60%{ transform: translate(-1px, 1px) rotate(-0.5deg); }
+    80%{ transform: translate(1px, -1px) rotate(0.5deg); }
+    100%{ transform: translate(0) rotate(0); }
+  }
+  .benefit-card.vibrate-auto{ animation: vibrate .9s linear 2; }
+  /* Form */
+  .form-card label{ color:#ddd; font-size:.95rem; display:block; margin-bottom:.6rem; }
+  .form-card input, .form-card select, .form-card textarea{
+    width:100%; padding:10px; background:#1c2230; color:#fff; border:1px solid #2b3345; border-radius:8px;
+  }
+  .toggle-btn{ cursor:pointer; text-decoration: underline; color: var(--gold); }
+  .hidden{ display:none; }
+</style>
+</head>
+
+<body class="text-white">
+  <div id="main">
+    <!-- Navbar -->
+    <nav class="w-full sticky top-0 z-40 border-b border-white/10 backdrop-blur bg-black/30">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🏠</span>
+          <span class="font-extrabold text-xl">HELIOS ALFA <span class="text-gold">Real Estate</span></span>
+        </div>
+        <div class="text-sm text-white/80"><i class="fa-solid fa-phone mr-2 text-gold"></i>España: +34 600 123 456</div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Encuentra tu hogar ideal en España, Carmina</h1>
+        <p class="text-lg md:text-2xl text-white/85 mb-8">Filtramos y negociamos por ti para ahorrarte tiempo, estrés y dinero.</p>
+        <button onclick="document.getElementById('propiedades').scrollIntoView({behavior:'smooth'})" class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg">
+          Ver opciones
+        </button>
+        <div class="mt-4 text-sm text-gold/90">🎁 Si agendas hoy, obtén un 10% de descuento en el Paquete Tranquilidad (revisión de contrato, negociación y altas de suministros).</div>
+      </div>
+    </section>
+
+    <!-- Beneficios con vibración -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-6">
+          
+            <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg benefit-card">
+              <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+              <p class="font-semibold">Requisitos claros (fianza/avales)</p>
+            </div>
+          
+            <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg benefit-card">
+              <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+              <p class="font-semibold">Visitas ágiles (virtual/presencial)</p>
+            </div>
+          
+            <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow-lg benefit-card">
+              <div class="text-3xl mb-3 text-gold"><i class="fa-regular fa-circle-check"></i></div>
+              <p class="font-semibold">Firma y altas de suministros</p>
+            </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Propiedades -->
+    <section id="propiedades" class="py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Propiedades seleccionadas para ti</h2>
+        <p class="text-center text-white/70 mb-10">Encontramos 1 opciones que coinciden con lo que buscas</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <div class="relative h-full overflow-hidden rounded-2xl shadow-xl border border-gold/20">
+            <img src="https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-276724_y03tfq.webp" alt="Piso en Alicante" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-black/60 text-gold px-3 py-1 rounded-full text-xs font-semibold border border-gold/40 shadow">
+              Alicante · Playa de San Juan
+            </div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%]">
+                
+                <h3 class="text-white text-lg font-bold drop-shadow">Piso</h3>
+              </div>
+              <div class="price-chip"><span>1 €</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="h-full rounded-2xl shadow-xl border border-gold/20 p-4 flex flex-col justify-between bg-card">
+            <div>
+              <h4 class="text-gold font-bold text-lg mb-1">Piso · Alicante</h4>
+              
+              <div class="grid grid-cols-2 gap-3 text-sm text-white/90">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>2 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>1 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>90 m²</div>
+                <div class="feature-pill"><i class="fa-solid fa-list mr-2"></i>Extras</div>
+              </div>
+              <p class="text-white/70 text-xs mt-3 line-clamp-3">Urbanización privada con piscina</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-gold font-semibold">1 €</div>
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="contactAgent('10')">Más información</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a Formulario -->
+    <section class="py-14 bg-black/30 border-t border-white/10">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-2xl md:text-3xl font-extrabold mb-3">¿Te interesa ver más detalles?</h3>
+        <p class="text-white/80 mb-5">Rellena el formulario y te ayudamos a conseguir lo que te gusta.</p>
+        <p class="text-gold font-semibold mb-8">🎁 Si agendas hoy, obtén un 10% de descuento en el Paquete Tranquilidad (revisión de contrato, negociación y altas de suministros).</p>
+        <a class="toggle-btn" onclick="document.getElementById('form-wrap').classList.toggle('hidden')">Mostrar / ocultar formulario</a>
+      </div>
+
+      <div id="form-wrap" class="hidden max-w-4xl mx-auto px-4 mt-6">
+        <form id="deepForm" class="bg-card rounded-2xl p-6 md:p-8 border border-gold/15 form-card">
+          <div class="grid gap-8">
+            <div>
+              <h4 class="text-gold text-xl font-bold mb-2">Preferencias de vivienda</h4>
+              
+            </div>
+            <div>
+              <h4 class="text-gold text-xl font-bold mb-2">Disponibilidad y requisitos</h4>
+              
+            </div>
+            <div>
+              <h4 class="text-gold text-xl font-bold mb-2">Detalles finales</h4>
+              
+              
+            </div>
+
+            <!-- Hidden con datos del preformulario -->
+            <input type="hidden" name="leadId" value="lead_1757597629342_w64n30a">
+            <input type="hidden" name="prelead_nombre" value="Carmina">
+            <input type="hidden" name="prelead_email" value="minasalazar.31@gmail.com">
+            <input type="hidden" name="prelead_telefono" value="3421344556677">
+            <input type="hidden" name="prelead_operacion" value="alquiler">
+            <input type="hidden" name="prelead_tipos" value="Piso, Dúplex">
+            <input type="hidden" name="prelead_habitaciones" value="2">
+            <input type="hidden" name="prelead_presupuesto_eur" value="1000">
+            <input type="hidden" name="prelead_ciudad" value="Alicante">
+
+            <button class="btn-primary px-6 py-3 rounded-full text-base" type="submit">
+              Enviar y agendar
+            </button>
+            <p class="text-white/60 text-sm">Tras enviar, verás más fotos y el vídeo del inmueble, y podrás <strong>agendar tu visita aquí</strong>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div> <!-- /main -->
+
+  <!-- Segunda página (post-envío) -->
+  <section id="detalle" class="py-16 hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-8">¡Gracias! Aquí tienes más detalles</h2>
+      <div id="gallery" class="grid md:grid-cols-2 gap-6 mb-10"></div>
+      <div id="videoWrap" class="mb-12"></div>
+      <div class="text-center">
+        <a href="https://t.me/consultainmobiliaria_bot" target="_blank" class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg">
+          Agenda tu visita aquí
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón flotante (Telegram) -->
+  <a href="https://t.me/consultainmobiliaria_bot" target="_blank" class="fixed bottom-6 right-6 z-50 btn-primary rounded-full px-5 py-3 shadow-2xl">
+    <i class="fa-regular fa-message mr-2"></i> Mensaje
+  </a>
+
+  <script>
+    // Beneficios: vibración auto al entrar en viewport (móvil)
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vibrate-auto'); setTimeout(()=>e.target.classList.remove('vibrate-auto'), 1800); }});
+    }, {threshold: 0.4});
+    document.querySelectorAll('.benefit-card').forEach(el=>obs.observe(el));
+
+    // Flip en móvil con tap
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.flip-card');
+      if(card){ card.classList.toggle('touch-flip'); }
+    });
+
+    // CTA propiedad (abre Telegram)
+    function contactAgent(propertyId){ window.open('https://t.me/consultainmobiliaria_bot', '_blank'); }
+
+    // ---- Form submit a webhook + mostrar segunda página
+    const WEBHOOK_URL = 'https://miia360n8n.ktrachitas.store/webhook/deepform_inmo';
+    const allProps  = [{"row_number":11,"ID":10,"Ciudad":"Alicante","Zona/Barrio":"Playa de San Juan","Tipo de Inmueble":"Piso","Operación":"Alquiler","Habitaciones":2,"Baños":1,"Superficie (m²)":90,"Extras":"Urbanización privada con piscina","Precio (€)":"1,200/mes","imagen1":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-276724_y03tfq.webp","imagen2":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-209315_ly0tnd.webp","videoguia":"https://www.youtube.com/watch?v=gcEvJaH-1tE","relevanceScore":28}];
+
+    function ytEmbed(url){
+      if(!url) return '';
+      const idMatch = url.match(/(?:youtu.be/|v=)([A-Za-z0-9_-]{6,})/);
+      const id = idMatch ? idMatch[1] : null;
+      return id ? '<div class="aspect-video rounded-2xl overflow-hidden border border-gold/20 shadow"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allowfullscreen></iframe></div>' : '';
+    }
+
+    function renderDetailView(){
+      document.getElementById('main').style.display='none';
+      const d = document.getElementById('detalle');
+      d.classList.remove('hidden');
+
+      // Galería: usa imagen1/imagen2 de las primeras 3 propiedades
+      const g = document.getElementById('gallery');
+      g.innerHTML = '';
+      (allProps || []).slice(0,3).forEach(p=>{
+        const sources = [p['imagen1'], p['imagen2'], p['Imagen (URL)']].filter(Boolean);
+        sources.forEach(src=>{
+          const el = document.createElement('div');
+          el.className = 'rounded-2xl overflow-hidden border border-gold/20 shadow';
+          el.innerHTML = '<img src="'+src+'" class="w-full h-full object-cover"/>';
+          g.appendChild(el);
+        });
+      });
+
+      // Vídeo: primero que exista
+      const vwrap = document.getElementById('videoWrap');
+      const firstWithVideo = (allProps || []).find(p => p['videoguia'] || p['Video']);
+      vwrap.innerHTML = ytEmbed(firstWithVideo ? (firstWithVideo['videoguia'] || firstWithVideo['Video']) : '');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    const formEl = document.getElementById('deepForm');
+    if(formEl){
+      formEl.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const fd = new FormData(formEl);
+        const data = Object.fromEntries(fd.entries());
+        // agrega ids de propiedades sugeridas (para trazabilidad)
+        data.selected_property_ids = (allProps || []).map(p => p['ID'] || p['#id'] || p['id']).filter(Boolean).join(',');
+        try{
+          await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+          });
+          renderDetailView();
+        }catch(err){
+          alert('Hubo un problema al enviar el formulario. Inténtalo de nuevo.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
