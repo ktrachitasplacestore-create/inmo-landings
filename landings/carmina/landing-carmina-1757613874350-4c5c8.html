@@ -14,6 +14,7 @@
   .text-gold{ color: var(--gold); }
   .btn-primary{ background: linear-gradient(135deg, var(--gold) 0%, var(--gold-600) 100%); color:#0b0e13; font-weight:700; transition:.25s; border:1px solid rgba(212,175,55,.5); }
   .btn-primary:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+  .btn-primary:disabled{ opacity: 0.7; cursor: not-allowed; filter: none; transform: none; }
   .price-chip{ background: rgba(0,0,0,.6); color: var(--gold); border: 1px solid var(--gold-600); padding:.25rem .6rem; border-radius:9999px; font-weight:800; font-size:.95rem; box-shadow:0 4px 16px var(--ring); }
   .feature-pill{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); padding:.35rem .6rem; border-radius:9999px; }
   .flip-card{ perspective:1200px; height: var(--card-h); }
@@ -38,11 +39,53 @@
   }
   .grid-2{ display:grid; gap:14px; grid-template-columns:1fr; }
   @media(min-width:768px){ .grid-2{ grid-template-columns:1fr 1fr; } }
+  
+  /* Loading animation */
+  .loading-spinner {
+    border: 3px solid rgba(212,175,55,0.3);
+    border-top: 3px solid var(--gold);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Smooth transitions */
+  .page-transition {
+    transition: all 0.5s ease-in-out;
+  }
+  
+  /* Success message */
+  .success-message {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  
+  /* Error message */
+  .error-message {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
 </style>
 </head>
 
 <body class="text-white">
-  <div id="main">
+  <div id="main" class="page-transition">
     <nav class="w-full sticky top-0 z-40 border-b border-white/10 backdrop-blur bg-black/30">
       <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center gap-2">
@@ -133,7 +176,7 @@
                 
                 <h3 class="text-white text-lg font-bold drop-shadow">Piso</h3>
               </div>
-              <div class="price-chip"><span>1 €</span></div>
+              <div class="price-chip"><span>1,200 €/mes</span></div>
             </div>
           </div>
         </div>
@@ -154,7 +197,7 @@
               <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="document.getElementById('deepForm').scrollIntoView({behavior:'smooth'})">
                 Llena el form para más
               </button>
-              <div class="text-gold font-semibold">1 €</div>
+              <div class="text-gold font-semibold">1,200 €/mes</div>
             </div>
           </div>
         </div>
@@ -204,37 +247,49 @@
       <div class="max-w-4xl mx-auto px-4">
         <div class="bg-card rounded-2xl p-6 md:p-8 border border-gold/15 form-card">
           <h3 class="text-2xl font-bold text-gold mb-6">Formulario especializado</h3>
+          
+          <!-- Mensajes de estado -->
+          <div id="successMessage" class="success-message">
+            <i class="fa-solid fa-check-circle mr-2"></i>
+            ¡Formulario enviado correctamente! Cargando detalles de la propiedad...
+          </div>
+          
+          <div id="errorMessage" class="error-message">
+            <i class="fa-solid fa-exclamation-triangle mr-2"></i>
+            <span id="errorText">Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.</span>
+          </div>
+          
           <form id="deepForm" class="space-y-8">
             <div>
               <h4 class="text-gold text-xl font-bold mb-2">Preferencias de vivienda</h4>
-              <div class="grid-2"><div class='grid'>\
-<label>Amueblado*<select name='amueblado' required><option>sí</option><option>no</option><option>indiferente</option></select></label>\
-<label>Mascotas*<select name='mascotas' required><option>sí</option><option>no</option></select></label>\
-<label>Baños<input type='number' min='0' name='banos' placeholder='Ej. 1'/></label>\
-<label>Superficie mínima (m8)<input type='number' min='0' name='superficie_min' placeholder='Ej. 60'/></label>\
-<label>Imprescindibles<input name='imprescindibles' placeholder='Ascensor, garaje, balc f3n, A/A, trastero...'/></label>\
-<label>Transporte cercano<input name='transporte' placeholder='Metro, bus, cercan edas (l edneas)'/></label>\
+              <div class="grid-2"><div class='grid'>
+<label>Amueblado*<select name='amueblado' required><option value="">Selecciona...</option><option>sí</option><option>no</option><option>indiferente</option></select></label>
+<label>Mascotas*<select name='mascotas' required><option value="">Selecciona...</option><option>sí</option><option>no</option></select></label>
+<label>Baños<input type='number' min='0' name='banos' placeholder='Ej. 1'/></label>
+<label>Superficie mínima (m²)<input type='number' min='0' name='superficie_min' placeholder='Ej. 60'/></label>
+<label>Imprescindibles<input name='imprescindibles' placeholder='Ascensor, garaje, balcón, A/A, trastero...'/></label>
+<label>Transporte cercano<input name='transporte' placeholder='Metro, bus, cercanías (líneas)'/></label>
 </div></div>
             </div>
             <div>
               <h4 class="text-gold text-xl font-bold mb-2">Disponibilidad y requisitos</h4>
-              <div class="grid-2"><div class='grid'>\
-<label>Fecha objetivo de mudanza<input type='date' name='fecha_mudanza'/></label>\
-<label>Duraci f3n de contrato (meses)<input type='number' min='1' name='duracion_contrato' placeholder='12'/></label>\
-<label>Situaci f3n laboral*<select name='situacion_laboral' required><option>empleado/a</option><option>aut f3nomo/a</option><option>estudiante</option><option>otro</option></select></label>\
-<label>Ingreso neto mensual (EUR)*<input type='number' min='0' step='50' name='ingreso_neto' required placeholder='Ej. 1800'/></label>\
-<label>1 Tienes n f3minas/contrato?*<select name='documentacion_nomina' required><option>sí</option><option>no</option></select></label>\
-<label>NIE/NIF*<select name='nie_nif' required><option>sí</option><option>en trámite</option><option>no</option></select></label>\
+              <div class="grid-2"><div class='grid'>
+<label>Fecha objetivo de mudanza<input type='date' name='fecha_mudanza'/></label>
+<label>Duración de contrato (meses)<input type='number' min='1' name='duracion_contrato' placeholder='12'/></label>
+<label>Situación laboral*<select name='situacion_laboral' required><option value="">Selecciona...</option><option>empleado/a</option><option>autónomo/a</option><option>estudiante</option><option>otro</option></select></label>
+<label>Ingreso neto mensual (EUR)*<input type='number' min='0' step='50' name='ingreso_neto' required placeholder='Ej. 1800'/></label>
+<label>¿Tienes nóminas/contrato?*<select name='documentacion_nomina' required><option value="">Selecciona...</option><option>sí</option><option>no</option></select></label>
+<label>NIE/NIF*<select name='nie_nif' required><option value="">Selecciona...</option><option>sí</option><option>en trámite</option><option>no</option></select></label>
 </div></div>
             </div>
             <div>
               <h4 class="text-gold text-xl font-bold mb-2">Detalles finales</h4>
-              <div class="grid-2"><div class='grid'>\
-<label>1 Aceptas alternativas similares si esta opci f3n no est e1 disponible?*<select name='acepta_alternativas' required><option>sí</option><option>no</option></select></label>\
-<label>Comentarios<textarea name='comentarios' placeholder='Cuéntanos horarios para visitas, si teletrabajas, si vienes de otra ciudad/país, etc.'></textarea></label>\
-<div class='rgpd'><label><input type='checkbox' name='consentimiento' required/> He leído y acepto la <a href='/politica-privacidad' target='_blank'>Política de Privacidad</a> y el <a href='/aviso-legal' target='_blank'>Aviso Legal</a>.</label></div>\
+              <div class="grid-2"><div class='grid'>
+<label>¿Aceptas alternativas similares si esta opción no está disponible?*<select name='acepta_alternativas' required><option value="">Selecciona...</option><option>sí</option><option>no</option></select></label>
+<label>Comentarios<textarea name='comentarios' placeholder='Cuéntanos horarios para visitas, si teletrabajas, si vienes de otra ciudad/país, etc.'></textarea></label>
+<div class='rgpd' style="margin-top: 1rem;"><label style="display: flex; align-items: flex-start; gap: 0.5rem; color: #fff;"><input type='checkbox' name='consentimiento' required style="width: auto; margin-top: 0.25rem;"/> He leído y acepto la <a href='/politica-privacidad' target='_blank' style="color: var(--gold); text-decoration: underline;">Política de Privacidad</a> y el <a href='/aviso-legal' target='_blank' style="color: var(--gold); text-decoration: underline;">Aviso Legal</a>.</label></div>
 </div></div>
-              <div class='recaptcha'>[reCAPTCHA]</div>
+              <div class='recaptcha' style="margin-top: 1rem; text-center; color: #888;">[reCAPTCHA - Implementar según necesidades]</div>
             </div>
 
             <!-- Hidden del preform -->
@@ -248,7 +303,10 @@
             <input type="hidden" name="prelead_presupuesto_eur" value="1000">
             <input type="hidden" name="prelead_ciudad" value="Alicante">
 
-            <button class="btn-primary px-6 py-3 rounded-full text-base" type="submit">Enviar y agendar</button>
+            <button class="btn-primary px-6 py-3 rounded-full text-base" type="submit" id="submitBtn">
+              <span id="submitText">Enviar y agendar</span>
+              <span id="loadingSpinner" class="loading-spinner" style="display: none;"></span>
+            </button>
             <p class="text-white/70 text-sm mt-2">Tras enviar, verás más fotos y el vídeo del inmueble y podrás <strong>agendar tu visita aquí</strong>.</p>
           </form>
         </div>
@@ -262,19 +320,19 @@
           
             <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow text-center">
               <img src="https://picsum.photos/seed/laura/400/400" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Laura G."/>
-              <blockquote class="text-white/85 italic mb-2">“Encontraron piso en 10 días y me ayudaron con todo el papeleo. Cero estrés.”</blockquote>
+              <blockquote class="text-white/85 italic mb-2">"Encontraron piso en 10 días y me ayudaron con todo el papeleo. Cero estrés."</blockquote>
               <p class="font-semibold">Laura G.</p>
             </div>
           
             <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow text-center">
               <img src="https://picsum.photos/seed/javier/400/400" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Javier P."/>
-              <blockquote class="text-white/85 italic mb-2">“Visitas por videollamada y firma rápida. Transparencia total.”</blockquote>
+              <blockquote class="text-white/85 italic mb-2">"Visitas por videollamada y firma rápida. Transparencia total."</blockquote>
               <p class="font-semibold">Javier P.</p>
             </div>
           
             <div class="bg-card rounded-2xl p-6 border border-gold/15 shadow text-center">
               <img src="https://picsum.photos/seed/martaleo/400/400" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Marta & Leo"/>
-              <blockquote class="text-white/85 italic mb-2">“Llegamos con mascotas y lo resolvieron: contrato, fianza y altas en una semana.”</blockquote>
+              <blockquote class="text-white/85 italic mb-2">"Llegamos con mascotas y lo resolvieron: contrato, fianza y altas en una semana."</blockquote>
               <p class="font-semibold">Marta & Leo</p>
             </div>
           
@@ -283,87 +341,295 @@
     </section>
   </div>
 
-  <!-- Segunda página -->
-  <section id="detalle" class="py-16 hidden">
+  <!-- Segunda página/vista -->
+  <section id="detalle" class="py-16 page-transition" style="display: none;">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-8">¡Gracias! Aquí tienes más detalles</h2>
-      <div id="gallery" class="grid md:grid-cols-2 gap-6 mb-10"></div>
-      <div id="videoWrap" class="mb-12"></div>
-      <div class="text-center">
-        <a href="https://t.me/consultainmobiliaria_bot" target="_blank" class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg">
-          Agenda tu visita aquí
+      <!-- Header con botón de volver -->
+      <div class="flex items-center justify-between mb-8">
+        <button onclick="goBack()" class="text-gold hover:text-gold-600 transition-colors">
+          <i class="fa-solid fa-arrow-left mr-2"></i>Volver al inicio
+        </button>
+        <div class="text-right">
+          <p class="text-white/70 text-sm">¡Ya casi terminamos!</p>
+        </div>
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">¡Gracias por completar el formulario!</h2>
+      <p class="text-center text-white/80 mb-12">Aquí tienes más detalles de tu propiedad seleccionada</p>
+      
+      <!-- Información de la propiedad -->
+      <div class="bg-card rounded-2xl p-6 border border-gold/15 mb-8">
+        <h3 class="text-gold text-xl font-bold mb-4">Detalles de la propiedad</h3>
+        <div id="propertyDetails" class="grid md:grid-cols-2 gap-6">
+          <!-- Se llenará dinámicamente -->
+        </div>
+      </div>
+      
+      <!-- Gallery -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-bold text-center mb-6">Galería de imágenes</h3>
+        <div id="gallery" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+      
+      <!-- Video -->
+      <div id="videoWrap" class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-6">Tour virtual</h3>
+      </div>
+      
+      <!-- CTA Final -->
+      <div class="text-center bg-gradient-to-r from-gold/10 to-transparent rounded-2xl p-8 border border-gold/20">
+        <h3 class="text-2xl font-bold text-gold mb-4">¿Te gusta lo que ves?</h3>
+        <p class="text-white/80 mb-6">¡Perfecto! Ahora agenda tu visita y hagamos que tu nuevo hogar sea una realidad.</p>
+        <a href="https://t.me/consultainmobiliaria_bot" target="_blank" class="btn-primary px-8 py-4 rounded-full text-lg shadow-lg inline-block">
+          <i class="fa-solid fa-calendar-days mr-2"></i>Agenda tu visita aquí
         </a>
+        <p class="text-white/60 text-sm mt-4">Te conectaremos con nuestro bot especializado que te ayudará paso a paso</p>
       </div>
     </div>
   </section>
 
+  <!-- Botón flotante de Telegram -->
   <a href="https://t.me/consultainmobiliaria_bot" target="_blank" class="fixed bottom-6 right-6 z-50 btn-primary rounded-full px-5 py-3 shadow-2xl">
-    <i class="fa-regular fa-message mr-2"></i> Mensaje
+    <i class="fa-brands fa-telegram mr-2"></i> Mensaje
   </a>
 
   <script>
+    // Intersection Observer para animaciones
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vibrate-auto'); setTimeout(()=>e.target.classList.remove('vibrate-auto'), 1800); }});
     }, {threshold: 0.4});
     document.querySelectorAll('.benefit-card').forEach(el=>obs.observe(el));
 
+    // Flip cards touch interaction
     document.addEventListener('click', (e) => {
       const card = e.target.closest('.flip-card');
       if(card){ card.classList.toggle('touch-flip'); }
     });
 
+    // Configuration
     const WEBHOOK_URL = 'https://miia360n8n.ktrachitas.store/webhook/deepform_inmo';
-    const allProps  = [{"row_number":11,"ID":10,"Ciudad":"Alicante","Zona/Barrio":"Playa de San Juan","Tipo de Inmueble":"Piso","Operación":"Alquiler","Habitaciones":2,"Baños":1,"Superficie (m²)":90,"Extras":"Urbanización privada con piscina","Precio (€)":"1,200/mes","imagen1":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-276724_y03tfq.webp","imagen2":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-209315_ly0tnd.webp","videoguia":"https://www.youtube.com/watch?v=gcEvJaH-1tE","relevanceScore":28}];
+    const allProps = [{"row_number":11,"ID":10,"Ciudad":"Alicante","Zona/Barrio":"Playa de San Juan","Tipo de Inmueble":"Piso","Operación":"Alquiler","Habitaciones":2,"Baños":1,"Superficie (m²)":90,"Extras":"Urbanización privada con piscina","Precio (€)":"1,200/mes","imagen1":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-276724_y03tfq.webp","imagen2":"https://res.cloudinary.com/dtugea4l5/image/upload/v1756744714/pexels-pixabay-209315_ly0tnd.webp","videoguia":"https://www.youtube.com/watch?v=gcEvJaH-1tE","relevanceScore":28}];
 
+    // Utility functions
     function ytEmbed(url){
       if(!url) return '';
-      const idMatch = url.match(/(?:youtu.be/|v=)([A-Za-z0-9_-]{6,})/);
+      const idMatch = url.match(/(?:youtu\.be\/|v=|embed\/)([A-Za-z0-9_-]{6,})/);
       const id = idMatch ? idMatch[1] : null;
-      return id ? '<div class="aspect-video rounded-2xl overflow-hidden border border-gold/20 shadow"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/'+id+'" frameborder="0" allowfullscreen></iframe></div>' : '';
+      return id ? `
+        <div class="aspect-video rounded-2xl overflow-hidden border border-gold/20 shadow-lg">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen class="rounded-2xl"></iframe>
+        </div>` : '';
+    }
+
+    function showMessage(type, text = '') {
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
+      
+      // Hide both messages first
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+      
+      if (type === 'success') {
+        successMsg.style.display = 'block';
+        setTimeout(() => successMsg.style.display = 'none', 3000);
+      } else if (type === 'error') {
+        if (text) {
+          document.getElementById('errorText').textContent = text;
+        }
+        errorMsg.style.display = 'block';
+        setTimeout(() => errorMsg.style.display = 'none', 5000);
+      }
+    }
+
+    function setButtonLoading(isLoading) {
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      
+      if (isLoading) {
+        submitBtn.disabled = true;
+        submitText.style.display = 'none';
+        loadingSpinner.style.display = 'inline-block';
+        submitBtn.innerHTML = '<span class="loading-spinner"></span>Enviando...';
+      } else {
+        submitBtn.disabled = false;
+        submitText.style.display = 'inline';
+        loadingSpinner.style.display = 'none';
+        submitBtn.innerHTML = 'Enviar y agendar';
+      }
+    }
+
+    function renderPropertyDetails() {
+      const detailsContainer = document.getElementById('propertyDetails');
+      if (allProps && allProps.length > 0) {
+        const prop = allProps[0];
+        detailsContainer.innerHTML = `
+          <div>
+            <h4 class="text-gold font-semibold mb-3">Información básica</h4>
+            <div class="space-y-2 text-white/90">
+              <p><i class="fa-solid fa-map-marker-alt text-gold w-5"></i> ${prop['Ciudad']} - ${prop['Zona/Barrio']}</p>
+              <p><i class="fa-solid fa-home text-gold w-5"></i> ${prop['Tipo de Inmueble']}</p>
+              <p><i class="fa-solid fa-bed text-gold w-5"></i> ${prop['Habitaciones']} habitaciones</p>
+              <p><i class="fa-solid fa-bath text-gold w-5"></i> ${prop['Baños']} baños</p>
+              <p><i class="fa-regular fa-square text-gold w-5"></i> ${prop['Superficie (m²)']} m²</p>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-gold font-semibold mb-3">Características especiales</h4>
+            <div class="space-y-2 text-white/90">
+              <p><i class="fa-solid fa-star text-gold w-5"></i> ${prop['Extras'] || 'Consultar características adicionales'}</p>
+              <p><i class="fa-solid fa-euro-sign text-gold w-5"></i> ${prop['Precio (€)']}</p>
+              <p><i class="fa-solid fa-handshake text-gold w-5"></i> ${prop['Operación']}</p>
+            </div>
+          </div>
+        `;
+      }
     }
 
     function renderDetailView(){
-      document.getElementById('main').style.display='none';
-      const d = document.getElementById('detalle');
-      d.classList.remove('hidden');
+      // Hide main page with smooth transition
+      const main = document.getElementById('main');
+      const detalle = document.getElementById('detalle');
+      
+      main.style.opacity = '0';
+      setTimeout(() => {
+        main.style.display = 'none';
+        detalle.style.display = 'block';
+        detalle.style.opacity = '0';
+        
+        // Render property details
+        renderPropertyDetails();
+        
+        // Render gallery
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+        
+        if (allProps && allProps.length > 0) {
+          const prop = allProps[0];
+          const sources = [prop['imagen1'], prop['imagen2'], prop['Imagen (URL)']].filter(Boolean);
+          
+          sources.forEach((src, index) => {
+            const el = document.createElement('div');
+            el.className = 'rounded-2xl overflow-hidden border border-gold/20 shadow-lg transform hover:scale-105 transition-transform cursor-pointer';
+            el.innerHTML = `<img src="${src}" class="w-full h-64 object-cover" alt="Imagen ${index + 1} de la propiedad" onclick="openImageModal('${src}')"/>`;
+            gallery.appendChild(el);
+          });
+        }
 
-      const g = document.getElementById('gallery');
-      g.innerHTML = '';
-      (allProps || []).slice(0,3).forEach(p=>{
-        const sources = [p['imagen1'], p['imagen2'], p['Imagen (URL)']].filter(Boolean);
-        sources.forEach(src=>{
-          const el = document.createElement('div');
-          el.className = 'rounded-2xl overflow-hidden border border-gold/20 shadow';
-          el.innerHTML = '<img src="'+src+'" class="w-full h-full object-cover"/>';
-          g.appendChild(el);
-        });
-      });
-
-      const vwrap = document.getElementById('videoWrap');
-      const firstWithVideo = (allProps || []).find(p => p['videoguia'] || p['Video']);
-      vwrap.innerHTML = ytEmbed(firstWithVideo ? (firstWithVideo['videoguia'] || firstWithVideo['Video']) : '');
-      window.scrollTo({top:0, behavior:'smooth'});
+        // Render video
+        const vwrap = document.getElementById('videoWrap');
+        const firstWithVideo = (allProps || []).find(p => p['videoguia'] || p['Video']);
+        if (firstWithVideo) {
+          const videoEmbed = ytEmbed(firstWithVideo['videoguia'] || firstWithVideo['Video']);
+          vwrap.innerHTML = videoEmbed;
+        } else {
+          vwrap.innerHTML = '<p class="text-center text-white/60">Video tour disponible próximamente</p>';
+        }
+        
+        // Smooth fade in
+        setTimeout(() => {
+          detalle.style.opacity = '1';
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        }, 100);
+      }, 300);
     }
 
+    function goBack() {
+      const main = document.getElementById('main');
+      const detalle = document.getElementById('detalle');
+      
+      detalle.style.opacity = '0';
+      setTimeout(() => {
+        detalle.style.display = 'none';
+        main.style.display = 'block';
+        main.style.opacity = '1';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }, 300);
+    }
+
+    // Form submission handler
     const formEl = document.getElementById('deepForm');
     if(formEl){
-      formEl.addEventListener('submit', async (e)=>{
+      formEl.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Set loading state
+        setButtonLoading(true);
+        
+        // Get form data
         const fd = new FormData(formEl);
         const data = Object.fromEntries(fd.entries());
+        
+        // Add selected property IDs
         data.selected_property_ids = (allProps || []).map(p => p['ID'] || p['#id'] || p['id']).filter(Boolean).join(',');
-        try{
-          await fetch(WEBHOOK_URL, {
+        
+        // Add timestamp
+        data.submission_timestamp = new Date().toISOString();
+        
+        try {
+          const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify(data)
           });
-          renderDetailView();
-        }catch(err){
-          alert('Hubo un problema al enviar el formulario. Inténtalo de nuevo.');
+          
+          if (response.ok) {
+            showMessage('success');
+            setTimeout(() => {
+              renderDetailView();
+            }, 1500);
+          } else {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+          
+        } catch (err) {
+          console.error('Error submitting form:', err);
+          showMessage('error', 'Hubo un problema al enviar el formulario. Por favor, verifica tu conexión e inténtalo de nuevo.');
+        } finally {
+          setButtonLoading(false);
         }
       });
     }
+
+    // Image modal functionality
+    function openImageModal(src) {
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur p-4';
+      modal.onclick = () => modal.remove();
+      
+      modal.innerHTML = `
+        <div class="max-w-4xl max-h-[90vh] relative">
+          <img src="${src}" class="w-full h-full object-contain rounded-lg" alt="Vista ampliada"/>
+          <button onclick="this.parentElement.parentElement.remove()" class="absolute top-4 right-4 text-white bg-black/50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition-colors">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+    }
+
+    // Add smooth scrolling for all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add any initialization code here
+      console.log('Landing page initialized successfully');
+    });
   </script>
 </body>
 </html>
