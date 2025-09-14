@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucía, alquila tu loft ideal en Alicante sin complicaciones - Lucía Godoy</title>
+<meta name="description" content="Sabemos que el mercado de alquiler en Alicante puede ser un laberinto: anuncios caducados, burocracia y fianzas que parecen infinitas."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  :root{
+    --bg:#fff8ef; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --accent:#d97706; --accent-700:#b45309; --ring: rgba(217,119,6,.25);
+    --chip:#fffbeb; --border:#f1e3c8; --card-h: 22rem;
+  }
+  body{ background: var(--bg); color:var(--ink); }
+  .bg-card{ background: var(--card); }
+  .btn-primary{
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-700) 100%);
+    color:#fff; font-weight:700; transition:.25s; border:1px solid rgba(217,119,6,.5);
+  }
+  .btn-primary:hover{ filter:brightness(1.03); transform: translateY(-1px); }
+  .price-chip{ background: var(--chip); color: var(--accent-700); border: 1px solid var(--border);
+    padding:.25rem .6rem; border-radius:9999px; font-weight:800; font-size:.95rem; box-shadow:0 4px 16px var(--ring); }
+  .feature-pill{ background: #fff; border:1px solid var(--border); padding:.35rem .6rem; border-radius:9999px; }
+  .id-chip{ background: #fff; border:1px solid var(--accent); border-radius:9999px; padding:.15rem .6rem; font-size:.8rem; color:var(--accent-700); }
+  .flip-card{ perspective:1200px; height: var(--card-h); }
+  .flip-inner{ position:relative; width:100%; height:100%; transition:transform .7s; transform-style:preserve-3d; }
+  .flip-card:hover .flip-inner, .flip-card.touch-flip .flip-inner{ transform: rotateY(180deg); }
+  .flip-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+  .flip-back{ transform: rotateY(180deg); }
+
+  /* POP */
+  .pop-card{ transition: transform .18s ease, box-shadow .18s ease; }
+  .pop-card:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+  .pop-auto{ animation: popIn .7s ease; }
+  @keyframes popIn{ 0%{ transform: translateY(6px) scale(.98); opacity:.8; } 100%{ transform: translateY(0) scale(1); opacity:1; } }
+
+  /* Formulario claro */
+  .form-card label{ color:#374151; font-size:.95rem; display:block; margin-bottom:.6rem; }
+  .form-card input, .form-card select, .form-card textarea{
+    width:100%; padding:10px; background:#fff; color:#111827; border:1px solid #e5e7eb; border-radius:8px;
+  }
+
+  /* Resaltado tipo "rotulador" */
+  .hl{ font-weight:800; background: linear-gradient(180deg, rgba(251,191,36,.25) 0%, rgba(251,191,36,.25) 100%); padding:0 .15em; border-radius:.15rem; }
+
+  /* CTA rebote */
+  .cta-bounce{ font-size:1.2rem; animation: rebote 1.4s ease-in-out infinite; display:inline-block; }
+  @keyframes rebote{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-6px) scale(1.02); }
+  }
+
+  /* Widget “¿tienes dudas?” */
+  .fab{ position:fixed; right:1.5rem; bottom:1.5rem; z-index:60; }
+  .assistant-btn{ box-shadow:0 15px 30px rgba(0,0,0,.15); }
+  .panel{ position:fixed; right:1rem; bottom:6rem; width:320px; max-width:90vw; background:#fff; border:1px solid #e5e7eb; border-radius:16px; box-shadow:0 20px 35px rgba(0,0,0,.15); overflow:hidden; transform: translateY(20px); opacity:0; pointer-events:none; transition:.25s; z-index:60; }
+  .panel.show{ transform: translateY(0); opacity:1; pointer-events:auto; }
+  .panel header{ background:linear-gradient(135deg, var(--accent), var(--accent-700)); color:#fff; padding:.8rem 1rem; font-weight:800; }
+  .panel .body{ padding:12px; color:#1f2937; max-height:60vh; overflow:auto; }
+  .faq{ border:1px solid #f0e2c7; background:#fffbeb; border-radius:12px; padding:.75rem .8rem; margin:.5rem 0; }
+  .faq summary{ cursor:pointer; font-weight:700; color:#b45309; }
+  .muted{ font-size:.8rem; color:#6b7280; }
+</style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="w-full sticky top-0 z-40 border-b border-amber-100 backdrop-blur bg-white/85">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏠</span>
+        <span class="font-extrabold text-xl">HELIOS ALFA <span class="text-amber-700">Real Estate</span></span>
+      </div>
+      <div class="text-sm text-gray-600"><i class="fa-solid fa-user-tie mr-2 text-amber-600"></i>Hola Lucía Godoy</div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-12 md:py-16 text-center">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Lucía, alquila tu loft ideal en Alicante sin complicaciones</h1>
+      <p class="text-lg md:text-xl text-gray-700">Sabemos que el mercado de alquiler en Alicante puede ser un laberinto: anuncios caducados, burocracia y fianzas que parecen infinitas.</p>
+    </div>
+  </section>
+
+  <!-- Problema -->
+  <section class="py-6">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm">
+        <h3 class="text-amber-700 text-2xl font-bold mb-2">¿Qué está pasando?</h3>
+        <p class="text-gray-700">Es frustrante recibir respuestas lentas o encontrarte con <strong class="hl">requisitos</strong> desconocidos como avales o <strong class="hl">documentación</strong> incompleta. Además, la competencia y la necesidad de <strong class="hl">papeleo</strong> como <strong class="hl">NIE</strong>, <strong class="hl">nóminas</strong> o seguros de impago complican aún más la búsqueda de un loft de una habitación dentro de tu presupuesto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solución -->
+  <section class="py-6">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm">
+        <h3 class="text-amber-700 text-2xl font-bold mb-2">¿Cómo te ayudamos?</h3>
+        <p class="text-gray-700">Te acompañamos paso a paso: filtramos opciones serias y actuales, te organizamos <strong class="hl">visitas</strong> rápidas ya sean virtuales o presenciales, negociamos las condiciones y te ayudamos con toda la <strong class="hl">documentación</strong> necesaria (<strong class="hl"><strong class="hl">NIE</strong>/<strong class="hl">NIF</strong></strong>, <strong class="hl">nóminas</strong>, <strong class="hl">fianza</strong> o <strong class="hl">aval</strong>). Finalmente te asistimos en la <strong class="hl">firma</strong> del <strong class="hl">contrato</strong> y en las <strong class="hl">altas de suministros</strong> para que tu llegada sea cómoda y sin sorpresas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preferencias + Ciudad -->
+  <section class="py-10">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+      <div class="bg-card rounded-2xl p-6 border border-amber-100">
+        <h4 class="text-amber-700 text-xl font-bold mb-3">Tu búsqueda</h4>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li>Operación: alquiler</li><li>Tipo(s): Loft</li><li>Habitaciones: 1</li><li>Presupuesto: 1000 €/mes</li><li>Ciudad: Alicante</li>
+        </ul>
+      </div>
+      <div class="bg-card rounded-2xl p-6 border border-amber-100">
+        <h4 class="text-amber-700 text-xl font-bold mb-3">Sobre la ciudad</h4>
+        <p class="text-gray-700">Alicante, ciudad mediterránea abierta y luminosa, combina playas increíbles con barrios tradicionales como El Barrio, el centro histórico y zonas modernas como Playa de San Juan. Su ritmo tranquilo, gastronomía y clima hacen ideal vivir en un loft práctico y cerca del mar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="py-10">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+      
+        <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+          <div class="text-3xl mb-3 text-amber-600"><i class="fa-regular fa-circle-check"></i></div>
+          <p class="font-semibold text-gray-800">Transparencia en requisitos españoles: fianza, aval, nóminas, NIE/NIF.</p>
+        </div>
+      
+        <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+          <div class="text-3xl mb-3 text-amber-600"><i class="fa-regular fa-circle-check"></i></div>
+          <p class="font-semibold text-gray-800">Opciones filtradas, visitas ágiles y comparativas claras.</p>
+        </div>
+      
+        <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+          <div class="text-3xl mb-3 text-amber-600"><i class="fa-regular fa-circle-check"></i></div>
+          <p class="font-semibold text-gray-800">Acompañamiento total: negociación, firma y altas de suministros.</p>
+        </div>
+      
+    </div>
+  </section>
+
+  <!-- Propiedades (3) -->
+  <section id="propiedades" class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Propiedades seleccionadas para ti</h2>
+      <p class="text-center text-gray-600 mb-10">Te proponemos 2 opciones muy alineadas</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <div class="relative h-full overflow-hidden rounded-2xl shadow-md border border-amber-200 bg-white">
+            <img src="https://via.placeholder.com/800x500?text=Propiedad" alt="Loft en Alicante" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%] text-white drop-shadow">
+                
+                <h3 class="text-lg font-bold">Loft · Alicante</h3>
+              </div>
+              <div class="price-chip"><span>540 €</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="h-full rounded-2xl shadow-md border border-amber-200 p-4 flex flex-col justify-between bg-amber-50">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-amber-700 font-bold text-lg">Características</h4>
+                <span class="id-chip">ID: <strong>35</strong></span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-sm text-gray-700">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>1 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>1 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>55 m²</div>
+              </div>
+              <p class="text-gray-600 text-xs mt-3">¿Te gusta esta opción? <button type="button" class="text-amber-700 underline" onclick="prefillId('35')">Usar este ID</button> y baja al formulario.</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="prefillId('35'); document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+                Llena el form para más
+              </button>
+              <div class="text-amber-700 font-semibold">540 €</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card group">
+      <div class="flip-inner">
+        <div class="flip-face flip-front">
+          <div class="relative h-full overflow-hidden rounded-2xl shadow-md border border-amber-200 bg-white">
+            <img src="https://via.placeholder.com/800x500?text=Propiedad" alt="Loft en Alicante" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent"></div>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <div class="max-w-[70%] text-white drop-shadow">
+                
+                <h3 class="text-lg font-bold">Loft · Alicante</h3>
+              </div>
+              <div class="price-chip"><span>650 €</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-face flip-back">
+          <div class="h-full rounded-2xl shadow-md border border-amber-200 p-4 flex flex-col justify-between bg-amber-50">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-amber-700 font-bold text-lg">Características</h4>
+                <span class="id-chip">ID: <strong>29</strong></span>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-sm text-gray-700">
+                <div class="feature-pill"><i class="fa-solid fa-bed mr-2"></i>1 hab</div>
+                <div class="feature-pill"><i class="fa-solid fa-bath mr-2"></i>1 baños</div>
+                <div class="feature-pill"><i class="fa-regular fa-square mr-2"></i>60 m²</div>
+              </div>
+              <p class="text-gray-600 text-xs mt-3">¿Te gusta esta opción? <button type="button" class="text-amber-700 underline" onclick="prefillId('29')">Usar este ID</button> y baja al formulario.</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <button class="btn-primary rounded-full px-4 py-2 text-sm" onclick="prefillId('29'); document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+                Llena el form para más
+              </button>
+              <div class="text-amber-700 font-semibold">650 €</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-center mb-8">Servicios que te ofrecemos</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757289392/pareja-vista-lateral-hablando-agente-bienes-raices_23-2150322069_gyp9vf.webp" class="w-full h-48 object-cover rounded-xl mb-4" alt="Búsqueda y visitas"/>
+            <h4 class="text-amber-700 font-bold text-lg mb-2">Búsqueda y visitas</h4>
+            <p class="text-gray-700">Curamos opciones reales, concertamos visitas rápidas (virtuales o presenciales) y te enviamos comparativas claras.</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757289399/istockphoto-1409298953-612x612_bkhgyp.webp" class="w-full h-48 object-cover rounded-xl mb-4" alt="Documentación y contrato"/>
+            <h4 class="text-amber-700 font-bold text-lg mb-2">Documentación y contrato</h4>
+            <p class="text-gray-700">Te guiamos con nóminas, NIE/NIF, fianza/aval, seguro de impago y firma digital.</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757690226/7GXFBTOOOVFULHDUU3UKCPBARA_azhc8f.webp" class="w-full h-48 object-cover rounded-xl mb-4" alt="Altas y llegada"/>
+            <h4 class="text-amber-700 font-bold text-lg mb-2">Altas y llegada</h4>
+            <p class="text-gray-700">Luz, agua, gas, internet, empadronamiento, seguros y checklist de las primeras semanas.</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-center mb-8">Casos de éxito</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm text-center pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757803120/testimonios_helios_ehcpkg.png" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Laura G."/>
+            <blockquote class="text-gray-700 italic mb-2">“Encontraron piso en 10 días y me ayudaron con todo el papeleo. Cero estrés.”</blockquote>
+            <p class="font-semibold text-gray-800">Laura G.</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm text-center pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757803103/testimonios_helios_2_pxoabz.png" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Javier P."/>
+            <blockquote class="text-gray-700 italic mb-2">“Visitas por videollamada y firma rápida. Transparencia total.”</blockquote>
+            <p class="font-semibold text-gray-800">Javier P.</p>
+          </div>
+        
+          <div class="bg-card rounded-2xl p-6 border border-amber-100 shadow-sm text-center pop-card">
+            <img src="https://res.cloudinary.com/dufxtzcpl/image/upload/v1757803119/testimonios_helios_1_k743pq.png" class="w-28 h-28 object-cover rounded-full mx-auto mb-4" alt="Marta & Leo"/>
+            <blockquote class="text-gray-700 italic mb-2">“Llegamos con mascotas y lo resolvieron: contrato, fianza y altas en una semana.”</blockquote>
+            <p class="font-semibold text-gray-800">Marta & Leo</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA incentivo con rebote -->
+  <section class="py-10">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-amber-700 font-extrabold cta-bounce">🎁 Agenda hoy y recibe GRATIS la revisión de contrato + checklist de mudanza en España (PDF).</p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="formulario" class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-card rounded-2xl p-6 md:p-8 border border-amber-100 form-card shadow-sm">
+        <h3 class="text-2xl font-bold text-amber-700 mb-6">Formulario especializado</h3>
+
+        <form id="deepForm" class="space-y-8" action="https://miia360n8n.ktrachitas.store/webhook/deepform_inmo" method="POST" target="_self" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label>Fecha probable de mudanza
+              <input type="date" name="fecha_mudanza">
+            </label>
+            <label>Duración del contrato (meses)
+              <input type="number" min="1" step="1" name="duracion_contrato" placeholder="12">
+            </label>
+            <label>Situación laboral*
+              <select name="situacion_laboral" required>
+                <option value="">Selecciona…</option>
+                <option>empleado/a</option>
+                <option>autónomo/a</option>
+                <option>estudiante</option>
+                <option>otro</option>
+              </select>
+            </label>
+            <label>Mascotas*
+              <select name="mascotas" required>
+                <option value="">Selecciona…</option>
+                <option>sí</option>
+                <option>no</option>
+              </select>
+            </label>
+            <label>NIE/NIF*
+              <select name="nie_nif" required>
+                <option value="">Selecciona…</option>
+                <option>sí</option>
+                <option>en trámite</option>
+                <option>no</option>
+              </select>
+            </label>
+            <label>ID del inmueble que te gusta* 
+              <input type="text" name="selected_property_id" id="selected_property_id" required placeholder="Ej. 1023">
+            </label>
+          </div>
+
+          <label>Comentarios
+            <textarea name="comentarios" rows="4" placeholder="Horarios para visitas, si teletrabajas, llegas desde otra ciudad/país, etc."></textarea>
+          </label>
+
+          <label class="block">
+            <input type="checkbox" name="consentimiento" required>
+            <span class="ml-2">He leído y acepto la <a href="/politica-privacidad" target="_blank" class="text-amber-700 underline">Política de Privacidad</a> y el <a href="/aviso-legal" target="_blank" class="text-amber-700 underline">Aviso Legal</a>.</span>
+          </label>
+
+          <!-- Hidden del preform -->
+          <input type="hidden" name="leadId" value="lead_1757812809488_ir7j3xy">
+          <input type="hidden" name="prelead_nombre" value="Lucía Godoy">
+          <input type="hidden" name="prelead_email" value="sugarboom.hn@gmail.com">
+          <input type="hidden" name="prelead_telefono" value="3465289785642">
+          <input type="hidden" name="prelead_operacion" value="alquiler">
+          <input type="hidden" name="prelead_tipos" value="Loft">
+          <input type="hidden" name="prelead_habitaciones" value="1">
+          <input type="hidden" name="prelead_presupuesto_eur" value="1000">
+          <input type="hidden" name="prelead_ciudad" value="Alicante">
+
+          <button class="btn-primary px-6 py-3 rounded-full text-base" type="submit">Enviar y Ver más!</button>
+          <p class="text-gray-600 text-sm mt-2">Al enviar, iremos a la página con más fotos y vídeo del inmueble seleccionado.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAB: ¿tienes dudas? (abre widget) -->
+  <div class="fab">
+    <button class="btn-primary rounded-full px-5 py-3 assistant-btn" id="openPanel">
+      ¿Tienes dudas?
+    </button>
+    <div class="text-center muted mt-1">Resuélvelas aquí</div>
+  </div>
+
+  <!-- Panel de FAQs (sin “bot”, habla de “Agente”) -->
+  <div class="panel" id="faqPanel" aria-hidden="true">
+    <header>Tu Agente responde</header>
+    <div class="body">
+      <details class="faq" open>
+        <summary>Vigencia de contratos</summary>
+        <p>En alquiler lo habitual son <strong>12 meses</strong> con renovación, y preavisos de <strong>30 días</strong>. En compra, el contrato de arras suele tener vigencia de 30-90 días hasta la firma.</p>
+      </details>
+      <details class="faq">
+        <summary>Requisitos principales</summary>
+        <p>Para alquiler: <strong>NIE/NIF</strong>, nóminas o justificante de ingresos, fianza (1-2 meses) y, en su caso, aval o seguro de impago. En compra: identificación, fondos/comprobantes y tasación si hay hipoteca.</p>
+      </details>
+      <details class="faq">
+        <summary>¿Cómo son las visitas?</summary>
+        <p>Hacemos <strong>visitas presenciales</strong> o por <strong>videollamada</strong>. Concertamos horarios de 7:00 a 19:00 (L-V) y 9:00 a 15:00 (fin de semana).</p>
+      </details>
+      <details class="faq">
+        <summary>Altas y llegada</summary>
+        <p>Te ayudamos con <strong>luz, agua, gas, Internet</strong> y empadronamiento. Te damos un <strong>checklist</strong> para que no se te escape nada.</p>
+      </details>
+    </div>
+  </div>
+
+  <footer class="py-8 text-center text-gray-500 border-t border-amber-100">
+    <small>&copy; 2025 HELIOS ALFA Real Estate</small>
+  </footer>
+
+  <script>
+    // POP en scroll
+    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('pop-auto'); }}); }, {threshold:0.4});
+    document.querySelectorAll('.pop-card').forEach(el=>obs.observe(el));
+
+    // Flip en móvil
+    document.addEventListener('click', (e)=>{
+      const card = e.target.closest('.flip-card'); if(card){ card.classList.toggle('touch-flip'); }
+    });
+
+    // Prefill del ID
+    window.prefillId = function(pid){
+      if(!pid) return;
+      const idInput = document.getElementById('selected_property_id');
+      if(idInput){ idInput.value = pid; idInput.focus(); }
+    };
+
+    // Widget FAQs
+    const panel = document.getElementById('faqPanel');
+    const btn   = document.getElementById('openPanel');
+    btn.addEventListener('click', ()=>{ panel.classList.toggle('show'); panel.setAttribute('aria-hidden', panel.classList.contains('show') ? 'false' : 'true'); });
+  </script>
+</body>
+</html>
